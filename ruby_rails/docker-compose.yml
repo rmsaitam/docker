@@ -1,0 +1,37 @@
+version: '3'
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_ROOT_PASSWORD=admin
+      - POSTGRES_DB=exemplo
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=user
+
+  web:
+    build: ./web
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  redis:
+    image: redis:3.2-alpine
+    command: redis-server --port 7479
+    ports:
+      - "7479:7479"
+
+  sidekiq:
+    build: ./web
+    command: bundle exec sidekiq
+    depends_on:
+      - db
+      - redis

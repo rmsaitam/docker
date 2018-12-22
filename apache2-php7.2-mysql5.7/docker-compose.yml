@@ -1,0 +1,28 @@
+version: "3"
+services:
+  php:
+    container_name: projetoA
+    build: ./apache-php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    links:
+      - db
+      - composer
+  db:
+    container_name: mysql57
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=exemplo
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user 
+  composer:
+     image: composer:1.8
+  phinx:
+     image: vegbrasil/phinx

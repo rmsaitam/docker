@@ -1,0 +1,23 @@
+version: "3"
+services:
+  php:
+    container_name: projetoB
+    build: ./apache-php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    links:
+      - db
+  db:
+    container_name: postgres11
+    image: postgres:11
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_ROOT_PASSWORD=admin
+      - POSTGRES_DB=exemplo
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=user

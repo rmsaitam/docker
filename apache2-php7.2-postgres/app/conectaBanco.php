@@ -1,5 +1,5 @@
 <?php 
-$dsn = "pgsql:host= db;port=5432;dbname=exemplo;user=user;password=user";
+$dsn = "pgsql:host= db;port=5432;dbname=exemplo;user=reginaldo;password=123456";
 
 try{
  $conn = new PDO($dsn);

@@ -10,14 +10,7 @@ services:
     links:
       - db
   db:
-    container_name: postgres11
-    image: postgres:11
-    ports:
-      - "5432:5432"
+    container_name: postgres
+    build: ./dbpostgres
     volumes:
       - ./pgdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_ROOT_PASSWORD=admin
-      - POSTGRES_DB=exemplo
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=user

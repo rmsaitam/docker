@@ -1,0 +1,7 @@
+version: "3"
+services:
+  pdflatex:
+    container_name: pdflatex
+    build: ./pdflatex
+    volumes:
+      - ./artigo:/usr/src/project

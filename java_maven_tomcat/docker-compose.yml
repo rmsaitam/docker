@@ -1,0 +1,23 @@
+version: "3"
+services:
+  java:
+    container_name: javaweb
+    build: ./java_tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/main:/usr/local/tomcat/webapps/
+    links:
+      - db
+  db:
+    container_name: mysql57
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=exemplodb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user 

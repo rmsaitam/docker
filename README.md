@@ -10,7 +10,7 @@ docker-compose up -d
 ```
 
 Com isso irá fazer o build e subir o ambiente. Inclui arquivo de exemplo de conexão com o banco de dados no ambiente correspondente para averiguar.
-Caso tenha mantido o mesmo credenciais e nome do banco de dados, então deve funcionar, porém caso tenha alterado, terá que obviamente alterar no arquivo conectaBanco.php a nova credenciais e nome do banco de dados.
+Para o caso do ambiente PHP e tenha mantido o mesmo credenciais e nome do banco de dados, então deve funcionar, porém caso tenha alterado, terá que obviamente alterar no arquivo conectaBanco.php a nova credenciais e nome do banco de dados.
 
 No browser http://localhost:8080/conectaBanco.php
 Também tem o arquivo info.php http://localhost:8080/info.php
